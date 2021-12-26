@@ -10,18 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reminderapp">
         <activity
+            android:name=".HomePage"
+            android:exported="false" />
+        <activity
             android:name=".AddReminderActivity"
             android:exported="true" />
         <activity
             android:name=".EditProfileActivity"
-            android:exported="true" />
-        <activity
-            android:name=".CategoryActivity2"
-            android:exported="true"
-            android:label="@string/title_activity_category2"
-            android:theme="@style/Theme.Reminderapp.NoActionBar" />
-        <activity
-            android:name=".CategoriesActivity"
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
@@ -29,10 +24,6 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="true"
-            android:label="@string/title_activity_login" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

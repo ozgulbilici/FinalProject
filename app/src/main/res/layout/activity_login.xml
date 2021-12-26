@@ -54,13 +54,13 @@
         android:hint="password"
         android:inputType="textPassword"
         android:textColor="#4CAF50"
-        app:layout_constraintBottom_toTopOf="@+id/btn3"
+        app:layout_constraintBottom_toTopOf="@+id/goToHomePage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtTxtUser" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn3"
+        android:id="@+id/goToHomePage"
         android:layout_width="253dp"
         android:layout_height="53dp"
         android:layout_marginBottom="52dp"

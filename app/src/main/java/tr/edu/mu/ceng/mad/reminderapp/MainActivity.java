@@ -9,8 +9,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Button btn1;
-    public Button btn2;
+    public Button goToLogin;
+    public Button goToSignUp;
 
     public MainActivity() {
     }
@@ -21,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //create buttons to transfer login and register page.
-        Button btn1 = (Button) findViewById(R.id.goToLogin);
-        Button btn2 = (Button) findViewById(R.id.goToSignUp);
+        Button goToLogin = (Button) findViewById(R.id.goToLogin);
+        Button goToSignUp = (Button) findViewById(R.id.goToSignUp);
 
 
-        btn1.setOnClickListener(new View.OnClickListener() {
+        goToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn2.setOnClickListener(new View.OnClickListener() {
+        goToSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this,RegisterActivity.class);

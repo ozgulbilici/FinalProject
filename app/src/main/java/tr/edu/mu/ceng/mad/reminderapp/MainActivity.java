@@ -25,19 +25,28 @@ public class MainActivity extends AppCompatActivity {
         Button goToSignUp = (Button) findViewById(R.id.goToSignUp);
 
 
-        goToLogin.setOnClickListener(new View.OnClickListener() {
+        /*goToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent myIntent = new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(myIntent);
             }
-        });
+        });*/
 
         goToSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this,RegisterActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        goToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent myIntent = new Intent(MainActivity.this,AddReminderActivity.class);
                 startActivity(myIntent);
             }
         });

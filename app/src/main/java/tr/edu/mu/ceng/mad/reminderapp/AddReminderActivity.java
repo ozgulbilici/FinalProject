@@ -14,14 +14,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AddReminderActivity extends AppCompatActivity {
+
+    ImageButton btnClick3;
+
     //add spinner
     private Spinner spinner;
     private Spinner spinner1;
@@ -40,6 +45,7 @@ public class AddReminderActivity extends AppCompatActivity {
     TextView txtTime;
     int Hour;
     int Minute;
+
 
 
     @Override
@@ -156,6 +162,16 @@ public class AddReminderActivity extends AppCompatActivity {
                 );
                 timePickerDialog.updateTime(Hour,Minute);
                 timePickerDialog.show();
+            }
+        });
+
+
+        btnClick3 = (ImageButton) findViewById(R.id.btnClick3);
+
+        btnClick3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(AddReminderActivity.this, "Reminder is created.", Toast.LENGTH_SHORT).show();
             }
         });
 

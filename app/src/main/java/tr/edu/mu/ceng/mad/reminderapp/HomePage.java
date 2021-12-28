@@ -6,86 +6,148 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
-import android.media.tv.TvContract;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
 import android.widget.Toast;
+
 
 import com.google.android.material.navigation.NavigationView;
 
-public class HomePage extends AppCompatActivity{ //implements NavigationView.OnNavigationItemSelectedListener{
+public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    public NavigationView navigationView;
-    public DrawerLayout drawer;
-    public Toolbar toolbar;
-    public Fragment fragment;
+    private Button healthBtn,addBtn,educationBtn,otherRemindBtn,socialActBtn;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        navigationView = findViewById(R.id.navigationView);
-        drawer = findViewById(R.id.drawer);
+        Button healthBtn = (Button) findViewById(R.id.healthBtn);
+        Button addBtn = (Button) findViewById(R.id.btnAdd);
+        Button educationBtn = (Button) findViewById(R.id.educationBtn);
+        Button otherRemindBtn = (Button) findViewById(R.id.otherRemindBtn);
+        Button socialActBtn= (Button) findViewById(R.id.socialActBtn);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
 
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,0,0 );
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
-        fragment = new FragmentHomePage();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_keep,fragment).commit();
+        navigationView.setNavigationItemSelectedListener(this);
 
-        ActionBarDrawerToggle toogle = new ActionBarDrawerToggle(this,drawer,toolbar
-                ,0,0);
-        drawer.addDrawerListener(toogle);
-        toogle.syncState();
 
-       // navigationView.setNavigationItemSelectedListener(this); ////Triggers the NavigationView.OnNavigationItemSelectedListener interface.
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent myIntent = new Intent(HomePage.this, AddReminderActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        healthBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent myIntent = new Intent(HomePage.this, HealthRemindCategory.class);
+                startActivity(myIntent);
+            }
+        });
+
+        educationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent myIntent = new Intent(HomePage.this,EducationRemindCategory.class);
+                startActivity(myIntent);
+            }
+        });
+
+        socialActBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent myIntent = new Intent(HomePage.this, SocialActReminderCategory.class);
+                startActivity(myIntent);
+            }
+        });
+
+        otherRemindBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent myIntent = new Intent(HomePage.this, OtherRemindCategory.class);
+                startActivity(myIntent);
+            }
+        });
+
+    }
+    public void editProfile(){
+        Intent intent = new Intent(this, EditProfileActivity.class);
+        startActivity(intent);
+
     }
 
-    /*
-    //This method tells which item was clicked.
+     @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.nav_menu, menu);
+        return true;
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.nav_profile){
-            Toast.makeText(getApplicationContext(),"Profile",Toast.LENGTH_SHORT).show();
+        int id=item.getItemId();
+
+        if(id==R.id.nav_profile) {
+            Intent intent = new Intent(HomePage.this, EditProfileActivity.class);
+            startActivity(intent);
         }
-        if(item.getItemId() == R.id.nav_reminders){
-            Toast.makeText(getApplicationContext(),"Reminders",Toast.LENGTH_SHORT).show();
-
-        }
-        if(item.getItemId() == R.id.nav_add_new_reminder){
-            Toast.makeText(getApplicationContext(),"Add New Reminder",Toast.LENGTH_SHORT).show();
-
-        }
-        if(item.getItemId() == R.id.nav_log_out){
-            Toast.makeText(getApplicationContext(),"Log out",Toast.LENGTH_SHORT).show();
-            fragment = new LogOutFragment();
-        }
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_keep,fragment).commit();
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-
-    } */
-
-    public void onBackPressed(){
-
-        if(drawer.isDrawerOpen(GravityCompat.START)){ //If the Drawer is open, pressing the back button will first close the navigation drawer.
-            drawer.closeDrawer(GravityCompat.START);
-        }
-
-        else{ //If the drawer is closed, the application exits.
-            Intent myIntent = new Intent(Intent.ACTION_MAIN);
-            myIntent.addCategory(Intent.CATEGORY_HOME);
-            myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(myIntent);
-        }
+        return onNavigationItemSelected(item);
     }
-
+        /*int id = item.getItemId();
+        switch(id){
+            case R.id.nav_profile:
+                Toast.makeText(HomePage.this,"Profile",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_reminders:
+                Toast.makeText(HomePage.this,"Profile",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_add_new_reminder:
+                Toast.makeText(HomePage.this,"Profile",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_log_out:
+                Toast.makeText(HomePage.this,"Profile",Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                return true;
+        }
+        return false;
+    }*/
 
 }
+

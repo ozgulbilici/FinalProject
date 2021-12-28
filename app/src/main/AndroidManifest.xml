@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reminderapp">
         <activity
+            android:name=".OtherRemindCategory"
+            android:exported="false" />
+        <activity
+            android:name=".SocialActReminderCategory"
+            android:exported="false" />
+        <activity
+            android:name=".EducationRemindCategory"
+            android:exported="false" />
+        <activity
+            android:name=".HealthRemindCategory"
+            android:exported="false" />
+        <activity
             android:name=".HomePage"
             android:exported="false" />
         <activity

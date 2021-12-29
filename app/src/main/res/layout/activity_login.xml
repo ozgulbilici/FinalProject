@@ -11,9 +11,9 @@
         android:id="@+id/imgView"
         android:layout_width="144dp"
         android:layout_height="145dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="108dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/mobilicon3" />
@@ -32,19 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.428" />
-
-    <EditText
-        android:id="@+id/edtTxtUser"
-        android:layout_width="251dp"
-        android:layout_height="53dp"
-        android:ems="10"
-        android:hint="username"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/edtTxtPass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgView" />
+        app:layout_constraintVertical_bias="0.081" />
 
     <EditText
         android:id="@+id/edtTxtPass"
@@ -56,22 +44,36 @@
         android:textColor="#4CAF50"
         app:layout_constraintBottom_toTopOf="@+id/goToHomePage"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtUser" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtEmail"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <EditText
+        android:id="@+id/edtTxtEmail"
+        android:layout_width="251dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="128dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/goToHomePage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgView"
+        app:layout_constraintVertical_bias="0.781" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/goToHomePage"
         android:layout_width="253dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="108dp"
         android:background="#B9FF5722"
         android:text="LOG-IN"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtPass"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

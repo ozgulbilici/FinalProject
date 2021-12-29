@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1032076828551",
+    "project_id": "final-reminder-app-5b88e",
+    "storage_bucket": "final-reminder-app-5b88e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032076828551:android:3a0f7d3ec28c2f332f3d22",
+        "android_client_info": {
+          "package_name": "tr.edu.mu.ceng.mad.reminderapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032076828551-ec7bo1o2ruer5pfqn0fk7slh8febcpne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrSy0-wLVk9llYJVzBUr8DXriiaTmVXu0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032076828551-ec7bo1o2ruer5pfqn0fk7slh8febcpne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

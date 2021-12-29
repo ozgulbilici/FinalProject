@@ -32,8 +32,10 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        fAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
+
+
+        fAuth = FirebaseAuth.getInstance(); //We used the getInstance method to use the objects referenced by the FirebaseAuth class.
+        database = FirebaseDatabase.getInstance(); //The object was created to access the database.
 
         goToSignUp2 = (Button) findViewById(R.id.goToSignUp2);
 
@@ -85,12 +87,14 @@ public class RegisterActivity extends AppCompatActivity {
                 fAuth.createUserWithEmailAndPassword(email,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if(task.isSuccessful()){
                             User user1 = new User(uName,email,password1);
                             String id = task.getResult().getUser().getUid();
-                            database.getReference().child("Users").child(id).setValue(user1);
+                            database.getReference().child("Users").child(id).setValue(user1); //The created users are written under the users name in the firebase console.
                             Toast.makeText(RegisterActivity.this,"Registration Succesful",Toast.LENGTH_SHORT).show();
                         }
+
                         else{
                             Toast.makeText(RegisterActivity.this,"Error",Toast.LENGTH_SHORT).show();
                         }

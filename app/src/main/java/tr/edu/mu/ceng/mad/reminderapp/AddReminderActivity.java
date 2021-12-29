@@ -165,7 +165,7 @@ public class AddReminderActivity extends AppCompatActivity {
             }
         });
 
-
+        //click button give a message
         btnClick3 = (ImageButton) findViewById(R.id.btnClick3);
 
         btnClick3.setOnClickListener(new View.OnClickListener() {

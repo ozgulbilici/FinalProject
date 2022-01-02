@@ -13,13 +13,13 @@
             android:name=".OtherRemindCategory"
             android:exported="false" />
         <activity
-            android:name=".SocialActReminderCategory"
+            android:name=".SocialActCategory"
             android:exported="false" />
         <activity
-            android:name=".EducationRemindCategory"
+            android:name=".EducationCategory"
             android:exported="false" />
         <activity
-            android:name=".HealthRemindCategory"
+            android:name=".HealthCategory"
             android:exported="false" />
         <activity
             android:name=".HomePage"

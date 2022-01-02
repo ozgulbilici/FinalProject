@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/txtcategories"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomePage">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/goToHealth"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="168dp"
+        android:background="#FFE83A2E"
+        android:text="Health"
+        android:textColor="#FDFAF8F8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="CATEGORIES"
+        android:textColor="#92B0278E"
+        android:textSize="42sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/goToHealth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.21" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/goToEducation"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:background="#3F51B5"
+        android:text="Education"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goToHealth" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/goToSocialAct"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:background="#A14FAA"
+        android:text="Social Activity"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goToEducation" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/goToOther"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:background="#FBE628"
+        android:text="Other Reminders"
+        android:textColor="#090808"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goToSocialAct"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

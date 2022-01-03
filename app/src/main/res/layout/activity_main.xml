@@ -27,11 +27,11 @@
         android:id="@+id/goToLogin"
         android:layout_width="251dp"
         android:layout_height="53dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="85dp"
         android:background="#B9FF5722"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgView" />
 
@@ -50,41 +50,15 @@
         android:id="@+id/goToSignUp"
         android:layout_width="251dp"
         android:layout_height="53dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="48dp"
         android:background="#56FF5722"
         android:text="Sign Up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goToLogin" />
-
-    <TextView
-        android:id="@+id/txtViewAccount"
-        android:layout_width="155dp"
-        android:layout_height="23dp"
-        android:layout_marginBottom="92dp"
-        android:text="Don't Have An Account?"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goToHomePage"
-        app:layout_constraintVertical_bias="0.288" />
-
-    <TextView
-        android:id="@+id/txtViewSıgnUp"
-        android:layout_width="155dp"
-        android:layout_height="23dp"
-        android:text="Sign up"
-        android:textColor="#56FF5722"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtViewAccount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/txtViewAccount"
-        app:layout_constraintTop_toTopOf="@+id/txtViewAccount"
+        app:layout_constraintTop_toBottomOf="@+id/goToLogin"
         app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

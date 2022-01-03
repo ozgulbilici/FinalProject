@@ -76,4 +76,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <TextView
+        android:id="@+id/txtViewAccount"
+        android:layout_width="155dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="32dp"
+        android:text="Don't Have An Account?"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtViewSignUp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goToHomePage"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtViewSignUp"
+        android:layout_width="155dp"
+        android:layout_height="23dp"
+        android:text="Sign up"
+        android:textColor="#56FF5722"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtViewAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txtViewAccount"
+        app:layout_constraintTop_toTopOf="@+id/txtViewAccount"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

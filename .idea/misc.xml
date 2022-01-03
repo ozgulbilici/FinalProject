@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/drawable-anydpi/ic_reminds.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/ic_add_new_reminder.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/ic_reminders.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_add_reminder.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_detail.xml" value="0.2359375" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_education_remind_category.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/carddesigneducation.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_home_page.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/reminderapp/app/src/main/res/layout/activity_add_reminder.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/reminderapp/app/src/main/res/layout/activity_categories.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/reminderapp/app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />

@@ -93,10 +93,11 @@ public class RegisterActivity extends AppCompatActivity {
                             String id = task.getResult().getUser().getUid();
                             database.getReference().child("Users").child(id).setValue(user1); //The created users are written under the users name in the firebase console.
                             Toast.makeText(RegisterActivity.this,"Registration Succesful",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), HomePage.class));
                         }
 
                         else{
-                            Toast.makeText(RegisterActivity.this,"Error",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this,"The e-mail address belongs to another account.",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reminderapp">
         <activity
+            android:name=".DetailActivity"
+            android:exported="true" />
+        <activity
             android:name=".OtherRemindCategory"
             android:exported="false" />
         <activity

@@ -2,16 +2,15 @@ package tr.edu.mu.ceng.mad.reminderapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,12 +19,18 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AddReminderActivity extends AppCompatActivity {
 
-    ImageButton btnClick3;
+    private ImageButton btnClick3;
+    private EditText editTextReminderName;
+    private EditText editTextReminderNote;
+
 
     //add spinner
     private Spinner spinner;
@@ -37,14 +42,19 @@ public class AddReminderActivity extends AppCompatActivity {
     private ArrayList<String> repeat = new ArrayList<>();
     private ArrayAdapter<String> repeatchoseeadapter;
     //add datepicker
-    TextView txtdate;
-    EditText datePickerdate;
+    private TextView txtdate;
+    private EditText datePickerdate;
+
+
     DatePickerDialog.OnDateSetListener setListener;
 
     //add timePicker
-    TextView txtTime;
+    private TextView txtTime;
     int Hour;
     int Minute;
+
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
 
 
 
@@ -53,9 +63,14 @@ public class AddReminderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reminder);
 
+        editTextReminderName = findViewById(R.id.editTextReminderName);
+        editTextReminderNote = findViewById(R.id.editTextReminderNote);
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("reminderEducation");
 
         //spinner
-        spinner = findViewById(R.id.spinner);
+        spinner = findViewById(R.id.spinnerSelectCategory);
 
         category.add("Health");
         category.add("Education");
@@ -69,7 +84,7 @@ public class AddReminderActivity extends AppCompatActivity {
 
 
 
-        spinner1 = findViewById(R.id.spinner3);
+        spinner1 = findViewById(R.id.spinnerRepeat);
 
         repeat.add("daily");
         repeat.add("weekly");
@@ -169,14 +184,29 @@ public class AddReminderActivity extends AppCompatActivity {
         btnClick3 = (ImageButton) findViewById(R.id.btnClick3);
 
         btnClick3.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+                String select_category = spinner.getSelectedItem().toString();
+                String reminder_name = editTextReminderName.getText().toString().trim();
+                //String  date = txtdate.getText().toString();
+                String  date = datePickerdate.getText().toString();
+                String  time = txtTime.getText().toString();
+                String  repeat = spinner1.getSelectedItem().toString();
+                String  reminder_note = editTextReminderNote.getText().toString().trim();
+
+                RemindersEducation remindersEducation = new RemindersEducation("",select_category,reminder_name,date, time, repeat, reminder_note);
+
+                myRef.push().setValue(remindersEducation);
+
                 Toast.makeText(AddReminderActivity.this, "Reminder is created.", Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(AddReminderActivity.this,EducationCategory.class));
+                finish();
             }
         });
 
-     }
-
+    }
 
 
 }

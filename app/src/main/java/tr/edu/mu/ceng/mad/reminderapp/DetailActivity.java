@@ -2,7 +2,6 @@ package tr.edu.mu.ceng.mad.reminderapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,7 +36,7 @@ public class DetailActivity extends AppCompatActivity {
     private Button DeleteButton;
     private Button EditButton;
 
-    private RemindersEducation remindersEducation;
+    private Reminders reminders;
 
 
     private FirebaseDatabase database;
@@ -54,7 +53,7 @@ public class DetailActivity extends AppCompatActivity {
         myRef = database.getReference("reminders");
 
 
-        remindersEducation = (RemindersEducation) getIntent().getSerializableExtra("nesne");
+        reminders = (Reminders) getIntent().getSerializableExtra("nesne");
 
         spinner = findViewById(R.id.spinnerSelectCategory);
         spinner1 = findViewById(R.id.spinnerRepeat);

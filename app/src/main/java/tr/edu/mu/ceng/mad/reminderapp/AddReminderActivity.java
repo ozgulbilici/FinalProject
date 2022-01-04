@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,6 +31,7 @@ public class AddReminderActivity extends AppCompatActivity {
     private ImageButton btnClick3;
     private EditText editTextReminderName;
     private EditText editTextReminderNote;
+    FirebaseAuth fAuth;
 
 
     //add spinner
@@ -63,11 +65,13 @@ public class AddReminderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reminder);
 
+        fAuth = FirebaseAuth.getInstance();
+
         editTextReminderName = findViewById(R.id.editTextReminderName);
         editTextReminderNote = findViewById(R.id.editTextReminderNote);
 
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("reminderEducation");
+        myRef = database.getReference("reminder");
 
         //spinner
         spinner = findViewById(R.id.spinnerSelectCategory);
@@ -187,6 +191,8 @@ public class AddReminderActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                //FirebaseUser user = fAuth.getCurrentUser();
+
                 String select_category = spinner.getSelectedItem().toString();
                 String reminder_name = editTextReminderName.getText().toString().trim();
                 //String  date = txtdate.getText().toString();
@@ -195,14 +201,27 @@ public class AddReminderActivity extends AppCompatActivity {
                 String  repeat = spinner1.getSelectedItem().toString();
                 String  reminder_note = editTextReminderNote.getText().toString().trim();
 
-                RemindersEducation remindersEducation = new RemindersEducation("",select_category,reminder_name,date, time, repeat, reminder_note);
+                Reminders reminders = new Reminders("",select_category,reminder_name,date, time, repeat, reminder_note);
 
-                myRef.push().setValue(remindersEducation);
+                myRef.push().setValue(reminders);
 
                 Toast.makeText(AddReminderActivity.this, "Reminder is created.", Toast.LENGTH_SHORT).show();
-
-                startActivity(new Intent(AddReminderActivity.this,EducationCategory.class));
-                finish();
+                if (select_category == "Education"){
+                    startActivity(new Intent(AddReminderActivity.this,EducationCategory.class));
+                    finish();
+                }
+                else if (select_category == "Health"){
+                    startActivity(new Intent(AddReminderActivity.this,HealthCategory.class));
+                    finish();
+                }
+                else if (select_category == "Social Activity"){
+                    startActivity(new Intent(AddReminderActivity.this,SocialActCategory.class));
+                    finish();
+                }
+                else if(select_category == "Other Activity"){
+                    startActivity(new Intent(AddReminderActivity.this,OtherRemindCategory.class));
+                    finish();
+                }
             }
         });
 

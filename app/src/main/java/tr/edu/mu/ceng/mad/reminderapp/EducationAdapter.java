@@ -17,9 +17,9 @@ import java.util.List;
 
 public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.CardDesign> {
     private Context context;
-    private List<RemindersEducation> educationreminderslist;
+    private List<Reminders> educationreminderslist;
 
-    public EducationAdapter(Context context, List<RemindersEducation> educationreminderslist) {
+    public EducationAdapter(Context context, List<Reminders> educationreminderslist) {
         this.context = context;
         this.educationreminderslist = educationreminderslist;
     }
@@ -27,21 +27,21 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.Card
     @NonNull
     @Override
     public CardDesign onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.carddesigneducation,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.carddesign,parent,false);
         return new CardDesign(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CardDesign holder, int position) {
-        final RemindersEducation remindersEducation = educationreminderslist.get(position);
-        holder.remindName.setText(remindersEducation.getReminder_name());
-        holder.remindNote.setText(remindersEducation.getReminder_note());
+        final Reminders reminders = educationreminderslist.get(position);
+        holder.remindName.setText(reminders.getReminder_name());
+        holder.remindNote.setText(reminders.getReminder_note());
 
         holder.reminderCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context,DetailActivity.class);
-                intent.putExtra("nesne", remindersEducation);
+                intent.putExtra("nesne", reminders);
                 context.startActivity(intent);
             }
         });

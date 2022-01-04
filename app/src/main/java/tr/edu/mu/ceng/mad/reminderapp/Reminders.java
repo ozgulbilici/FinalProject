@@ -2,7 +2,7 @@ package tr.edu.mu.ceng.mad.reminderapp;
 
 import java.io.Serializable;
 
-public class RemindersEducation implements Serializable {
+public class Reminders implements Serializable {
 
     private String reminder_id;
     private String select_category;
@@ -12,11 +12,11 @@ public class RemindersEducation implements Serializable {
     private String repeat;
     private String reminder_note;
 
-    public RemindersEducation() {
+    public Reminders() {
 
     }
 
-    public RemindersEducation(String reminder_id, String select_category, String reminder_name, String date, String clock, String repeat, String reminder_note) {
+    public Reminders(String reminder_id, String select_category, String reminder_name, String date, String clock, String repeat, String reminder_note) {
         this.reminder_id = reminder_id;
         this.select_category = select_category;
         this.reminder_name = reminder_name;
@@ -81,4 +81,5 @@ public class RemindersEducation implements Serializable {
     public void setReminder_note(String reminder_note) {
         this.reminder_note = reminder_note;
     }
+
 }

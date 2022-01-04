@@ -22,7 +22,7 @@ public class EducationCategory extends AppCompatActivity {
     private TextView textViewEducation;
     private RecyclerView rv;
     private Button AddEducation;
-    private ArrayList<RemindersEducation> remindersEducationArrayList;
+    private ArrayList<Reminders> remindersArrayList;
     private EducationAdapter adapter;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
@@ -33,7 +33,7 @@ public class EducationCategory extends AppCompatActivity {
         setContentView(R.layout.activity_education_remind_category);
 
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("reminderEducation");
+        myRef = database.getReference("EducationReminder");
 
         textViewEducation = findViewById(R.id.textViewEducation);
         rv = findViewById(R.id.rv);
@@ -42,9 +42,9 @@ public class EducationCategory extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-        remindersEducationArrayList = new ArrayList<>();
+        remindersArrayList = new ArrayList<>();
 
-        adapter = new EducationAdapter(this, remindersEducationArrayList);
+        adapter = new EducationAdapter(this, remindersArrayList);
 
         rv.setAdapter(adapter);
 
@@ -67,16 +67,17 @@ public class EducationCategory extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                remindersEducationArrayList.clear();
+                remindersArrayList.clear();
 
                 for(DataSnapshot d:dataSnapshot.getChildren()){
-                    RemindersEducation reminderEducation = d.getValue(RemindersEducation.class);
+                    Reminders reminderEducation = d.getValue(Reminders.class);
                     reminderEducation.setReminder_id(d.getKey());
 
-                    remindersEducationArrayList.add(reminderEducation);
+                    remindersArrayList.add(reminderEducation);
 
 
                 }
+
 
                 adapter.notifyDataSetChanged();
 

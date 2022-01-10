@@ -124,9 +124,10 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/clickbtn"
             android:src="@drawable/ic_clickasset1"
-            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName8"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -189,10 +190,11 @@
             android:id="@+id/btnClick2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/clickbtn"
             android:src="@drawable/ic_clickasset1"
-            app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword4"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

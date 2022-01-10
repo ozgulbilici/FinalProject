@@ -17,7 +17,8 @@
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgbackward"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,23 +36,22 @@
 
     <Button
         android:id="@+id/AddEducation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="44dp"
-        android:backgroundTint="#37887F7F"
+        android:backgroundTint="#663F51B5"
         android:text="Add Reminder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imgbackward"
-        android:layout_width="32dp"
+        android:layout_width="40dp"
         android:layout_height="32dp"
         android:layout_marginLeft="16sp"
         android:layout_marginTop="25dp"
-        android:background="#3F51B5"
+        android:background="#003F51B5"
         android:src="@drawable/backwardarrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditReminderActivity"
+    android:background="#319C27B0"
+    android:padding="16sp">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <ImageView
+                    android:id="@+id/imgbackward"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/backwardarrow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textAddReminder" />
+
+
+                <TextView
+                    android:id="@+id/textAddReminder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="EDIT REMINDER"
+                    android:textAlignment="center"
+                    android:textColor="#EEEA6F98"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16sp"
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="51dp"
+                    android:text="Select Category"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textAddReminder" />
+
+                <Spinner
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/spinnerSelectCategory"
+                    android:layout_width="200dp"
+                    android:layout_height="51dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView11"
+                    app:layout_constraintStart_toEndOf="@+id/textView11"
+                    app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16sp"
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="51dp"
+                    android:text="Reminder Name"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                <EditText
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/editTextReminderName"
+                    android:layout_width="200dp"
+                    android:layout_height="51dp"
+                    android:ems="10"
+                    android:hint="reminder name"
+                    android:inputType="textPersonName"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                    app:layout_constraintStart_toEndOf="@+id/textView7"
+                    app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+
+                <TextView
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/txtdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="51dp"
+                    android:text="Date"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+
+                <EditText
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/datePickerdate"
+                    style="?android:spinnerStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="51dp"
+                    android:hint="Select Date"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="@+id/editTextReminderName"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextReminderName" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="51dp"
+                    android:text="Clock"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtdate" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/txtTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="51dp"
+                    android:hint="Select Time"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/datePickerdate"
+                    app:layout_constraintTop_toBottomOf="@+id/datePickerdate" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    app:layout_goneMarginTop="16dp"
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Repeat"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                <Spinner
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/spinnerRepeat"
+                    android:layout_width="227dp"
+                    android:layout_height="51dp"
+                    android:minHeight="48dp"
+                    app:layout_constraintStart_toStartOf="@+id/txtTime"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTime" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="51dp"
+                    android:text="Reminder Note"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                <EditText
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/editTextReminderNote"
+                    android:layout_width="227dp"
+                    android:layout_height="51dp"
+                    android:ems="10"
+                    android:hint="reminder note"
+                    android:inputType="textPersonName"
+                    app:layout_constraintStart_toStartOf="@+id/spinnerRepeat"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerRepeat" />
+
+
+                <ImageButton
+                    android:layout_marginRight="16sp"
+                    android:layout_marginTop="16sp"
+                    android:id="@+id/btnClick3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/clickbtn"
+                    android:src="@drawable/ic_clickasset1"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextReminderNote"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextReminderNote" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

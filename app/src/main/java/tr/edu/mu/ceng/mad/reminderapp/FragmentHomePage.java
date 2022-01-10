@@ -19,6 +19,7 @@ public class FragmentHomePage extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home_page,container,false);
+
         Button goToHealth = view.findViewById(R.id.goToHealth);
         Button goToEducation = view.findViewById(R.id.goToEducation);
         Button goToSocialAct = view.findViewById(R.id.goToSocialAct);
@@ -55,6 +56,15 @@ public class FragmentHomePage extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+        ////// NOTIFY SERVICE
+
+        Intent serviceIntent = new Intent(getContext(), ReminderService.class);
+        serviceIntent.putExtra("bisiler", String.valueOf("10000"));
+        getActivity().stopService(serviceIntent);
+        getActivity().startService(serviceIntent);
+
 
 
         return view;

@@ -17,9 +17,9 @@ import java.util.List;
 
 public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.CardDesign> {
     private Context context;
-    private List<Reminders> educationreminderslist;
+    private List<ReminderEducation> educationreminderslist;
 
-    public EducationAdapter(Context context, List<Reminders> educationreminderslist) {
+    public EducationAdapter(Context context, List<ReminderEducation> educationreminderslist) {
         this.context = context;
         this.educationreminderslist = educationreminderslist;
     }
@@ -33,15 +33,20 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.Card
 
     @Override
     public void onBindViewHolder(@NonNull CardDesign holder, int position) {
-        final Reminders reminders = educationreminderslist.get(position);
-        holder.remindName.setText(reminders.getReminder_name());
-        holder.remindNote.setText(reminders.getReminder_note());
+        final ReminderEducation remindersEducation = educationreminderslist.get(position);
+        holder.remindName.setText(remindersEducation.getReminder_name());
+        holder.remindNote.setText(remindersEducation.getReminder_note());
 
         holder.reminderCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context,DetailActivity.class);
-                intent.putExtra("nesne", reminders);
+                intent.putExtra("remiid", remindersEducation.getReminder_id());
+                intent.putExtra("reminame", remindersEducation.getReminder_name());
+                intent.putExtra("remicate", remindersEducation.getSelect_category());
+                intent.putExtra("remidate", remindersEducation.getDate());
+                intent.putExtra("remitime", remindersEducation.getClock());
+                intent.putExtra("reminote", remindersEducation.getReminder_note());
                 context.startActivity(intent);
             }
         });

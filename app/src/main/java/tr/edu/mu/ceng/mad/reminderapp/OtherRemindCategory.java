@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,39 +22,60 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class OtherRemindCategory extends AppCompatActivity {
-    private TextView textViewOtherReminders;
+
+    private TextView textViewEducation;
     private RecyclerView rv;
-    private Button AddOtherReminders;
-    private ArrayList<Reminders> remindersArrayList;
-    private OtherReminderAdapter adapter;
+    private Button AddEducation;
+    private ArrayList<ReminderEducation> remindersEducationArrayList;
+    private EducationAdapter adapter;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
+    String uuid;
+    ImageView imgBackward;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other_remind_category);
 
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("OtherReminder");
+        imgBackward = findViewById(R.id.imgbackward);
 
-        textViewOtherReminders = findViewById(R.id.textViewOtherReminders);
+        imgBackward.setColorFilter(R.color.black);
+
+        imgBackward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(OtherRemindCategory.this, HomePage.class);
+                startActivity(intent);
+
+            }
+        });
+
+        // Current User uuid
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        uuid = currentFirebaseUser.getUid();
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("reminder");
+
+        textViewEducation = findViewById(R.id.textViewEducation);
         rv = findViewById(R.id.rv);
-        AddOtherReminders = findViewById(R.id.AddOtherReminders);
+        AddEducation = findViewById(R.id.AddEducation);
 
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-        remindersArrayList = new ArrayList<>();
+        remindersEducationArrayList = new ArrayList<>();
 
-        adapter = new OtherReminderAdapter(this, remindersArrayList);
+        adapter = new EducationAdapter(this, remindersEducationArrayList);
 
         rv.setAdapter(adapter);
 
-        everyOtherReminders();
+        everyEducationReminders();
 
 
-        AddOtherReminders.setOnClickListener(new View.OnClickListener() {
+        AddEducation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(OtherRemindCategory.this,AddReminderActivity.class));
@@ -59,25 +83,29 @@ public class OtherRemindCategory extends AppCompatActivity {
         });
 
 
-
     }
 
-    private void everyOtherReminders() {
+    private void everyEducationReminders() {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                remindersArrayList.clear();
+                remindersEducationArrayList.clear();
 
                 for(DataSnapshot d:dataSnapshot.getChildren()){
-                    Reminders reminder = d.getValue(Reminders.class);
-                    reminder.setReminder_id(d.getKey());
+                    ReminderEducation reminderEducation = d.getValue(ReminderEducation.class);
+                    reminderEducation.setReminder_id(d.getKey());
 
-                    remindersArrayList.add(reminder);
+                    if (reminderEducation.getWhouuid().equals(uuid)){
+                        if (reminderEducation.getSelect_category().equals("Other Activity"))
+                            remindersEducationArrayList.add(reminderEducation);
+                    }
+
+
+
 
 
                 }
-
 
                 adapter.notifyDataSetChanged();
 
@@ -90,13 +118,5 @@ public class OtherRemindCategory extends AppCompatActivity {
         });
 
     }
-    /*@Override
-    public void onBackPressed() {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-
-    }*/
 
 }

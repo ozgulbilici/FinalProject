@@ -32,8 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
-
         fAuth = FirebaseAuth.getInstance(); //We used the getInstance method to use the objects referenced by the FirebaseAuth class.
         database = FirebaseDatabase.getInstance(); //The object was created to access the database.
 
@@ -43,7 +41,6 @@ public class RegisterActivity extends AppCompatActivity {
         userPassword = findViewById(R.id.edtTxtPass2);
         userEmail = findViewById(R.id.edtTxtEmail2);
         logInHere = findViewById(R.id.logInHere);
-
 
         logInHere.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,45 +58,49 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-            private void createUser() {
-                String email = userEmail.getText().toString();
-                String uName = userName.getText().toString();
-                String password1 = userPassword.getText().toString();
+    private void createUser() {
+        String email = userEmail.getText().toString();
+        String uName = userName.getText().toString();
+        String password1 = userPassword.getText().toString();
 
-                if(TextUtils.isEmpty(email)){
-                    Toast.makeText(this,"Email is empty!",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(uName)){
-                    Toast.makeText(this,"Username is empty!",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(password1)){
-                    Toast.makeText(this,"Password is empty!",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(userPassword.length()<6){
-                    Toast.makeText(this,"Password length must be greater than 6 letter",Toast.LENGTH_SHORT).show();
-                    return;
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this,"Email is empty!",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(uName)){
+            Toast.makeText(this,"Username is empty!",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(password1)){
+            Toast.makeText(this,"Password is empty!",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(userPassword.length()<6){
+            Toast.makeText(this,"Password length must be greater than 6 letter",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //created user
+        fAuth.createUserWithEmailAndPassword(email,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if(task.isSuccessful()){
+                    User user1 = new User(uName,email,password1,"Add Birthday","Add Age");
+                    String id = task.getResult().getUser().getUid();
+                    database.getReference().child("Users").child(id).setValue(user1); //The created users are written under the users name in the firebase console.
+                    Toast.makeText(RegisterActivity.this,"Registration Succesful",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), HomePage.class));
                 }
 
-                //created user
-                fAuth.createUserWithEmailAndPassword(email,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        if(task.isSuccessful()){
-                            User user1 = new User(uName,email,password1);
-                            String id = task.getResult().getUser().getUid();
-                            database.getReference().child("Users").child(id).setValue(user1); //The created users are written under the users name in the firebase console.
-                            Toast.makeText(RegisterActivity.this,"Registration Succesful",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        }
-
-                        else{
-                            Toast.makeText(RegisterActivity.this,"The e-mail address belongs to another account.",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                else{
+                    Toast.makeText(RegisterActivity.this,"The e-mail address belongs to another account.",Toast.LENGTH_SHORT).show();
+                }
             }
+        });
     }
+
+
+
+}
+

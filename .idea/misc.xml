@@ -4,21 +4,29 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/drawable-anydpi/ic_reminds.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/ic_access_alarm_black_24dp.xml" value="0.1" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/ic_add_new_reminder.xml" value="0.1" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/ic_reminders.xml" value="0.1" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_add_reminder.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_detail.xml" value="0.2359375" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_edit_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_edit_reminder.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_education_remind_category.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_health_remind_category.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_home_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_notification.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_other_remind_category.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_register.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_social_act.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_social_act_reminder_category.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/carddesign.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/carddesigneducation.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_home_page.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/layout/nav_header.xml" value="0.21458333333333332" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/menu/menu.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalProject/app/src/main/res/mipmap-anydpi-v26/iconus.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/reminderapp/app/src/main/res/layout/activity_add_reminder.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/reminderapp/app/src/main/res/layout/activity_categories.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/reminderapp/app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />

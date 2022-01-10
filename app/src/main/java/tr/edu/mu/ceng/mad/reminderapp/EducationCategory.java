@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,18 +25,39 @@ public class EducationCategory extends AppCompatActivity {
     private TextView textViewEducation;
     private RecyclerView rv;
     private Button AddEducation;
-    private ArrayList<Reminders> remindersArrayList;
+    private ArrayList<ReminderEducation> remindersEducationArrayList;
     private EducationAdapter adapter;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
+    String uuid;
+    ImageView imgBackward;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_education_remind_category);
 
+        imgBackward = findViewById(R.id.imgbackward);
+
+        imgBackward.setColorFilter(R.color.black);
+
+        imgBackward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(EducationCategory.this, HomePage.class);
+                startActivity(intent);
+
+            }
+        });
+
+        // Current User uuid
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        uuid = currentFirebaseUser.getUid();
+
+
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("EducationReminder");
+        myRef = database.getReference("reminder");
 
         textViewEducation = findViewById(R.id.textViewEducation);
         rv = findViewById(R.id.rv);
@@ -42,9 +66,9 @@ public class EducationCategory extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-        remindersArrayList = new ArrayList<>();
+        remindersEducationArrayList = new ArrayList<>();
 
-        adapter = new EducationAdapter(this, remindersArrayList);
+        adapter = new EducationAdapter(this, remindersEducationArrayList);
 
         rv.setAdapter(adapter);
 
@@ -67,18 +91,22 @@ public class EducationCategory extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                remindersArrayList.clear();
+                remindersEducationArrayList.clear();
 
                 for(DataSnapshot d:dataSnapshot.getChildren()){
-                    Reminders reminderEducation = d.getValue(Reminders.class);
+                    ReminderEducation reminderEducation = d.getValue(ReminderEducation.class);
                     reminderEducation.setReminder_id(d.getKey());
 
-                    remindersArrayList.add(reminderEducation);
 
+
+
+
+                    if (reminderEducation.getWhouuid().equals(uuid)){
+                        if (reminderEducation.getSelect_category().equals("Education"))
+                            remindersEducationArrayList.add(reminderEducation);
+                    }
 
                 }
-
-
                 adapter.notifyDataSetChanged();
 
             }

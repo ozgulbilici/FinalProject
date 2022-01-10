@@ -7,17 +7,22 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.tv.TvContract;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomePage extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener{ //implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -26,11 +31,61 @@ public class HomePage extends AppCompatActivity implements  NavigationView.OnNav
     public Toolbar toolbar;
     public Fragment fragment;
     Context context=this;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    String uuid;
+    DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        // Current User uuid
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        uuid = currentFirebaseUser.getUid();
+
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("reminder");
+        dbHelper=new DatabaseHelper(getApplicationContext());
+
+
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot d:dataSnapshot.getChildren()){
+                    ReminderEducation reminderEducation = d.getValue(ReminderEducation.class);
+                    reminderEducation.setReminder_id(d.getKey());
+
+                    if (reminderEducation.getWhouuid().equals(uuid)){
+
+                        Plan plan=new Plan(reminderEducation.getDate(),reminderEducation.getClock()
+                                ,reminderEducation.getReminder_name(),reminderEducation.getReminder_note());
+
+                        dbHelper.addPlan(plan);
+
+
+                    }
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        Intent serviceIntent = new Intent(HomePage.this, ReminderService.class);
+        serviceIntent.putExtra("bisiler", String.valueOf("10000"));
+        stopService(serviceIntent);
+        startService(serviceIntent);
+
 
         navigationView = findViewById(R.id.navigationView);
         drawer = findViewById(R.id.drawer);
@@ -119,5 +174,28 @@ public class HomePage extends AppCompatActivity implements  NavigationView.OnNav
             myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(myIntent);
         }
-    }}
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(HomePage.this,AddReminderActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+}
 

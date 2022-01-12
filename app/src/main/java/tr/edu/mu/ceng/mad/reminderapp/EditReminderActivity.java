@@ -37,7 +37,6 @@ public class EditReminderActivity extends AppCompatActivity {
 
     //add spinner
     private Spinner spinner;
-    private Spinner spinner1;
 
     private ArrayList<String> category = new ArrayList<>();
     private ArrayAdapter<String> categorychoseeadapter;
